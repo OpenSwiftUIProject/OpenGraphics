@@ -172,7 +172,7 @@ let package = Package(
         ),
         .target(
             name: "OpenCoreGraphicsShims",
-            dependencies: ["OpenCoreGraphics"],
+            dependencies: coreGraphicsCondition ? [] : ["OpenCoreGraphics"],
             swiftSettings: sharedSwiftSettings,
             linkerSettings: [
                 .linkedFramework("CoreGraphics", .when(platforms: .darwinPlatforms)),
@@ -194,7 +194,7 @@ let package = Package(
         ),
         .target(
             name: "OpenQuartzCoreShims",
-            dependencies: ["OpenQuartzCore"],
+            dependencies: coreGraphicsCondition ? [] : ["OpenQuartzCore"],
             swiftSettings: sharedSwiftSettings,
             linkerSettings: [
                 .linkedFramework("QuartzCore", .when(platforms: .darwinPlatforms)),
